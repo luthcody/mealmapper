@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Footer from "@/components/footer";
+import { dark } from "@clerk/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{ elements: {
+      userButtonPopoverCard: "border-1 border-gray-400",
+    } }}>
       <html lang="en">
         <body className={`${inter.className} bg-white`}>
           <Header />

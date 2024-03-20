@@ -36,26 +36,28 @@ export default function Footer() {
 
   return (
     <footer className="bg-white">
-      <nav className="mx-auto max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div className="mx-auto p-6 lg:px-8" aria-label="Global">
 
-        <div className="flex flex-row">
-            <div className="basis-auto">
+        {/* <div className="flex flex-1 flex-row items-center text-center justify-around max-w-7xl lg:px-8">
+            <div className="basis-1/4">
                 <a href="#" className="-m-1.5 p-1.5">
                     <span className="sr-only">Your Company</span>
                     <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
                 </a>
             </div>
-            <div className="basis-1/8 text-sm font-semibold leading-6 text-gray-900">
+            <div className="basis-1/4 text-sm font-semibold leading-6 text-gray-900">
               Features
             </div>
-            <div className="basis-1/8 text-sm font-semibold leading-6 text-gray-900">
+            <div className="basis-1/4 text-sm font-semibold leading-6 text-gray-900">
               Marketplace
             </div>
-            <div className="basis-1/8 text-sm font-semibold leading-6 text-gray-900">
+            <div className="basis-1/4 text-sm font-semibold leading-6 text-gray-900">
               Company
             </div>
-        </div>
-      </nav>
+        </div> */}
+        <div className="text-center text-xs mt-2 font-semibold text-gray-500">A project by <a href='https://www.codyluth.com' className='underline'>Cody Luth</a></div>
+
+      </div>
     </footer>
   )
 }

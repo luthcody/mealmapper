@@ -55,7 +55,7 @@ export default function Header() {
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <SignedIn>
-            <Popover className="relative">
+            {/* <Popover className="relative">
               <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
                 Product
                 <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
@@ -104,16 +104,19 @@ export default function Header() {
                   </div>
                 </Popover.Panel>
               </Transition>
-            </Popover>
+            </Popover> */}
 
             <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-              Features
+              My Lists
             </a>
             <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-              Marketplace
+              My Recipes
             </a>
             <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-              Company
+              My Items
+            </a>
+            <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+              My Stores
             </a>
           </SignedIn>
         </Popover.Group>
