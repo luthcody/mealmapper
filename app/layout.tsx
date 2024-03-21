@@ -24,9 +24,11 @@ export default function RootLayout({
     } }}>
       <html lang="en">
         <body className={`${inter.className} bg-white`}>
-          <Header />
-          {children}
-          <Footer />
+          <div>
+            <Header />
+            {children}
+            <Footer />
+          </div>
         </body>
       </html>
     </ClerkProvider>

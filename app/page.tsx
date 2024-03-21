@@ -1,5 +1,4 @@
-import MainBanner from "@/components/homepage/mainBanner";
-import Image from "next/image";
+import MainBanner from "@/components/mainBanner";
 
 export default function Home() {
   return (
