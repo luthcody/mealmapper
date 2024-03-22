@@ -6,6 +6,8 @@ export type StoreCategory = {
 export type Store = {
     id: string;
     name: string;
+    description: string;
+    color: string;
     categories: StoreCategory[];
 }
 
