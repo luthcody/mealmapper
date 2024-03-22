@@ -5,11 +5,17 @@ import { SignInButton, SignedOut } from '@clerk/nextjs'
 import { Stores } from './stores'
 import { PencilSquareIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Dialog, Transition } from '@headlessui/react'
+import { useForm } from 'react-hook-form';
 
 export default function StoresList() {
     const [sideMenu, setSideMenu] = useState('');
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm();
 
-    const colors : { [id: string] : { bg: string, shadow: string } } = {
+    const colors: { [id: string]: { bg: string, shadow: string } } = {
         cyan: {
             bg: 'bg-cyan-500',
             shadow: 'shadow-cyan-500 hover:shadow-cyan-500'
@@ -37,7 +43,7 @@ export default function StoresList() {
     }
 
     // Temporary Stores
-    const stores : Stores = [
+    const stores: Stores = [
         {
             id: '1',
             name: 'Walmart',
@@ -138,69 +144,108 @@ export default function StoresList() {
             <Transition.Root show={sideMenu !== ''} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={() => setSideMenu('')}>
                     <Transition.Child
-                    as={Fragment}
-                    enter="ease-in-out duration-500"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="ease-in-out duration-500"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
+                        as={Fragment}
+                        enter="ease-in-out duration-500"
+                        enterFrom="opacity-0"
+                        enterTo="opacity-100"
+                        leave="ease-in-out duration-500"
+                        leaveFrom="opacity-100"
+                        leaveTo="opacity-0"
                     >
-                    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+                        <div className="fixed inset-0 bg-gray-800 bg-opacity-85 transition-opacity" />
                     </Transition.Child>
 
                     <div className="fixed inset-0 overflow-hidden">
-                    <div className="absolute inset-0 overflow-hidden">
-                        <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-                        <Transition.Child
-                            as={Fragment}
-                            enter="transform transition ease-in-out duration-500 sm:duration-700"
-                            enterFrom="translate-x-full"
-                            enterTo="translate-x-0"
-                            leave="transform transition ease-in-out duration-500 sm:duration-700"
-                            leaveFrom="translate-x-0"
-                            leaveTo="translate-x-full"
-                        >
-                            <Dialog.Panel className="pointer-events-auto relative w-screen max-w-md">
-                            <Transition.Child
-                                as={Fragment}
-                                enter="ease-in-out duration-500"
-                                enterFrom="opacity-0"
-                                enterTo="opacity-100"
-                                leave="ease-in-out duration-500"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                            >
-                                <div className="absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4">
-                                </div>
-                            </Transition.Child>
-                            <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
-                                <div className="px-4 sm:px-6">
-                                    <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
-                                        Panel title
-                                    </Dialog.Title>
-                                </div>
-                                <div className="absolute right-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4">
-                                    <button
-                                        type="button"
-                                        className="relative rounded-md text-gray-800 hover:gray-300 focus:outline-none focus:ring-2 focus:ring-white"
-                                        onClick={() => setSideMenu('')}
-                                    >
-                                        <span className="absolute -inset-2.5" />
-                                        <span className="sr-only">Close panel</span>
-                                        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                                    </button>
-                                </div>
-                                <div className="relative mt-6 flex-1 px-4 sm:px-6 text-black">CONTENT: {sideMenu}</div>
+                        <div className="absolute inset-0 overflow-hidden">
+                            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                                <Transition.Child
+                                    as={Fragment}
+                                    enter="transform transition ease-in-out duration-500 sm:duration-700"
+                                    enterFrom="translate-x-full"
+                                    enterTo="translate-x-0"
+                                    leave="transform transition ease-in-out duration-500 sm:duration-700"
+                                    leaveFrom="translate-x-0"
+                                    leaveTo="translate-x-full"
+                                >
+                                    <Dialog.Panel className="pointer-events-auto relative w-screen max-w-md">
+                                        <Transition.Child
+                                            as={Fragment}
+                                            enter="ease-in-out duration-500"
+                                            enterFrom="opacity-0"
+                                            enterTo="opacity-100"
+                                            leave="ease-in-out duration-500"
+                                            leaveFrom="opacity-100"
+                                            leaveTo="opacity-0"
+                                        >
+                                            <div className="absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4">
+                                            </div>
+                                        </Transition.Child>
+                                        <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
+                                            <div className="px-4 sm:px-6">
+                                                <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
+                                                    Update Store
+                                                </Dialog.Title>
+                                            </div>
+                                            <div className="absolute right-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4">
+                                                <button
+                                                    type="button"
+                                                    className="relative rounded-md text-gray-800 hover:gray-300 focus:outline-none focus:ring-2 focus:ring-white"
+                                                    onClick={() => setSideMenu('')}
+                                                >
+                                                    <span className="absolute -inset-2.5" />
+                                                    <span className="sr-only">Close panel</span>
+                                                    <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                                                </button>
+                                            </div>
+                                            <div className="relative mt-6 flex-1 px-4 sm:px-6 text-black">
+                                            <form onSubmit={handleSubmit((data) => console.log(data))}>
+                                                <div>
+                                                    <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">Store Name</label>
+                                                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 sm:max-w-md">
+                                                        <input
+                                                            className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                                            placeholder="Trader Joe's"
+                                                            {...register('name', { required: true })}
+                                                        />
+                                                    </div>
+                                                    <div className="block text-sm font-medium leading-6 text-red-700">{errors.name && <p>Store name is required.</p>}</div>
+                                                </div>
+
+                                                <div className="mt-3">
+                                                    <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">Store Description</label>
+
+                                                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 sm:max-w-md">
+                                                        <input
+                                                            type="text"
+                                                            className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                                            {...register('description')} />
+                                                    </div>
+                                                </div>
+
+                                                <div className="mt-3">
+                                                    <label htmlFor="color" className="block text-sm font-medium leading-6 text-gray-900">Color</label>
+                                                        
+                                                    <div className="flex">
+                                                        <input
+                                                            type="color"
+                                                            className="block flex-1 border-0 bg-transparent h-10"
+                                                            {...register('color')} />
+                                                    </div>
+                                                </div>
+
+                                                <div className="mt-5">
+                                                    <button type="submit" />
+                                                </div>
+                                            </form>
+                                            </div>
+                                        </div>
+                                    </Dialog.Panel>
+                                </Transition.Child>
                             </div>
-                            </Dialog.Panel>
-                        </Transition.Child>
                         </div>
-                    </div>
                     </div>
                 </Dialog>
             </Transition.Root>
         </>
     )
 }
-  

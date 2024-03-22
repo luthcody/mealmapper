@@ -55,7 +55,7 @@ export default function Footer() {
               Company
             </div>
         </div> */}
-        <div className="text-center text-xs mt-2 font-semibold text-gray-500">A project by <a href='https://www.codyluth.com' className='underline'>Cody Luth</a></div>
+        <div className="text-center text-xs mt-2 mb-20 font-semibold text-gray-500">A project by <a href='https://www.codyluth.com' className='underline'>Cody Luth</a></div>
 
       </div>
     </footer>
