@@ -22,13 +22,9 @@ export default function RootLayout({
     <ClerkProvider appearance={{ elements: {
       userButtonPopoverCard: "border-1 border-gray-400",
     } }}>
-      <html lang="en">
+      <html lang="en" className="bg-white">
         <body className={`${inter.className} bg-white`}>
-          <div>
-            <Header />
-            {children}
-            <Footer />
-          </div>
+          {children}
         </body>
       </html>
     </ClerkProvider>

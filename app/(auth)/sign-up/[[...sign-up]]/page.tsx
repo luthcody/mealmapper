@@ -1,7 +1,7 @@
 'use client'
 
 import LoginBanner from "@/components/loginBanner";
-import { SignIn, SignedOut, useUser } from "@clerk/nextjs";
+import { SignUp, SignedOut, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -16,11 +16,7 @@ export default function Page() {
             </div>
           </SignedOut>
           <div className="basis-auto mt-7 xl:mt-0">
-            <SignIn
-              routing="path"
-              path="/"
-              afterSignInUrl="/dashboard"
-            />
+            <SignUp />
           </div>
         </div>
       </div>

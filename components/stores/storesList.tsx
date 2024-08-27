@@ -233,8 +233,19 @@ export default function StoresList() {
                                                     </div>
                                                 </div>
 
+                                                <div className="mt-3">
+                                                    <label htmlFor="ca" className="block text-sm font-medium leading-6 text-gray-900">Color</label>
+                                                        
+                                                    <div className="flex">
+                                                        <input
+                                                            type="color"
+                                                            className="block flex-1 border-0 bg-transparent h-10"
+                                                            {...register('color')} />
+                                                    </div>
+                                                </div>
+
                                                 <div className="mt-5">
-                                                    <button type="submit" />
+                                                    <button type="submit" className="btn">Submit</button>
                                                 </div>
                                             </form>
                                             </div>

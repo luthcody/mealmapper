@@ -1,3 +1,5 @@
+"use client";
+
 import StoresBanner from "@/components/stores/storesBanner";
 import StoresList from "@/components/stores/storesList";
 
